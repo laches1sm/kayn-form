@@ -1,8 +1,19 @@
 package main
 
-func main() {
-	// we need to: get user region
-	// username
-	// map supplied user region to a valid Riot API region (sorry tencent users)
+import (
+	"kayn-form/cmd/adapters"
+	"kayn-form/cmd/httpserver"
+	"log"
+)
 
+func main() {
+	log := log.New(log.Writer(), "help-pix-", 0)
+	adapter := adapters.NewKaynFormAdapter(log)
+
+	server := httpserver.NewParrotServer(log, adapter)
+	log.Print(`Creating server`)
+	server.SetupRoutes()
+	if err := server.Start(httpserver.ServerPort); err != nil {
+		log.Println(err.Error())
+	}
 }
