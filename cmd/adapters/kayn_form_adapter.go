@@ -10,8 +10,6 @@ import (
 	"os"
 	"strings"
 
-	"kayn_form/models"
-
 	"github.com/KnutZuidema/golio"
 	"github.com/KnutZuidema/golio/api"
 	"github.com/KnutZuidema/golio/riot/lol"
